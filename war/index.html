@@ -4,8 +4,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <title>Constant Oduol</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="description" content="The unordered thoughts of Constant Oduol from computers, stars to spirituality"/>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+    	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    	<meta name="HandheldFriendly" content="True">
+    	<meta name="MobileOptimized" content="320">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+    	<meta name="format-detection" content="telephone=no" />
+        <meta name="description" content="Constant Oduol | Personal blog"/>
         <meta name="author" content="constant">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
@@ -395,6 +400,7 @@
                 }); 
          }
           
+         //<img src="cover-final.jpg" name="cover-final.jpg" caption="This is the book cover">
          function statusUI(statusIndex){
         		var status = statusList[statusIndex];
             	var post = status.status;
@@ -412,10 +418,14 @@
             	dummyArea.html(post);
             	var images = $("#dummy_area").find("img");
             	for(var x = 0; x < images.length; x++){
-            		var captionArea = dom.newEl("div");
             		var caption = images[x].getAttribute("caption");
-            		captionArea.innerHTML = caption;
-            		captionArea.attr("style","padding: 5px;border: 2px solid #ADD8E6;border-top: 0px;width : "+images[x].style.width+";");
+            		var captionArea = dom.newEl("div");
+            		if(caption != null){
+            			console.log("hereeee")
+                		captionArea.innerHTML = caption;
+                		captionArea.attr("style","padding: 5px;border: 2px solid #ADD8E6;border-top: 0px;width : "+images[x].style.width+";");
+            		}
+            		
             		var imageName = images[x].getAttribute("name");
             		var imageId = "_image_"+Math.floor(Math.random()*10000000);
             		images[x].setAttribute("id",imageId);
@@ -434,9 +444,9 @@
          function shareToTimeline(message,link){
  			FB.ui({
  					    method: 'feed',
- 					    name: 'The unordered thoughts of constant oduol',
+ 					    name: 'Constant Oduol | Personal blog',
  					    link: link,
- 					    picture: 'https://constantoduol.appspot.com/img/unorder.jpg',
+ 					    picture: 'https://constantoduol.appspot.com/img/see.png',
  					    description: message
  					  },
  					  function(response) {
